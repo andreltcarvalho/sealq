@@ -7,14 +7,14 @@ export default function SubmissaoPage() {
     <>
       <PageHeader
         eyebrow="Trabalhos"
-        title="Submissao de trabalhos"
-        description="Rota preparada para receber trabalhos academicos da SEALQ em uma proxima etapa."
+        title="Submissão de trabalhos"
+        description="Rota preparada para receber trabalhos acadêmicos da SEALQ em uma próxima etapa."
       />
       <Container className="py-12">
         <Card>
-          <h2 className="text-xl font-semibold text-[#16351f]">Submissao ainda nao implementada</h2>
+          <h2 className="text-xl font-semibold text-[#16351f]">Submissão ainda não implementada</h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-[#566247]">
-            Uploads, validacoes e armazenamento ficarao fora deste primeiro recorte.
+            Uploads, validações e armazenamento ficarão fora deste primeiro recorte.
           </p>
         </Card>
       </Container>

@@ -3,9 +3,9 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Card } from "@/components/ui/Card";
 
 const schedule = [
-  { time: "09:00", title: "Credenciamento", type: "Recepcao" },
-  { time: "10:00", title: "Abertura oficial", type: "Cerimonia" },
-  { time: "14:00", title: "Mesa tematica sobre sistemas agricolas", type: "Debate" },
+  { time: "09:00", title: "Credenciamento", type: "Recepção" },
+  { time: "10:00", title: "Abertura oficial", type: "Cerimônia" },
+  { time: "14:00", title: "Mesa temática sobre sistemas agrícolas", type: "Debate" },
 ];
 
 export default function ProgramacaoPage() {
@@ -13,8 +13,8 @@ export default function ProgramacaoPage() {
     <>
       <PageHeader
         eyebrow="Agenda"
-        title="Programacao inicial"
-        description="Estrutura base para exibir atividades da SEALQ por horario, tipo, sala e responsaveis."
+        title="Programação inicial"
+        description="Estrutura base para exibir atividades da SEALQ por horário, tipo, sala e responsáveis."
       />
       <Container className="py-12">
         <div className="grid gap-4">

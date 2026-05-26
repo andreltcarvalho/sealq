@@ -10,7 +10,7 @@ export default function PalestrantesPage() {
       <PageHeader
         eyebrow="Convidados"
         title="Palestrantes"
-        description="Base visual para listar convidados, instituicoes, mini bios e temas ligados a entomologia, acarologia e agricultura."
+        description="Base visual para listar convidados, instituições, mini bios e temas ligados à entomologia, acarologia e agricultura."
       />
       <Container className="grid gap-5 py-12 md:grid-cols-3">
         {speakers.map((speaker) => (
@@ -19,9 +19,9 @@ export default function PalestrantesPage() {
               {speaker.slice(0, 1)}
             </div>
             <h2 className="mt-5 text-lg font-semibold text-[#16351f]">{speaker}</h2>
-            <p className="mt-2 text-sm text-[#566247]">Instituicao academica</p>
+            <p className="mt-2 text-sm text-[#566247]">Instituição acadêmica</p>
             <p className="mt-4 text-sm leading-6 text-[#566247]">
-              Mini bio e tema da palestra entram aqui quando a programacao estiver definida.
+              Mini bio e tema da palestra entram aqui quando a programação estiver definida.
             </p>
           </Card>
         ))}

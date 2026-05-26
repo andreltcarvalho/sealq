@@ -4,10 +4,10 @@ import { Container } from "./Container";
 
 const navItems = [
   { href: "/evento", label: "Evento" },
-  { href: "/programacao", label: "Programacao" },
+  { href: "/programacao", label: "Programação" },
   { href: "/palestrantes", label: "Palestrantes" },
-  { href: "/inscricao", label: "Inscricao" },
-  { href: "/submissao", label: "Submissao" },
+  { href: "/inscricao", label: "Inscrição" },
+  { href: "/submissao", label: "Submissão" },
 ];
 
 export function Header() {
@@ -33,7 +33,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Navegacao principal">
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Navegação principal">
           {navItems.map((item) => (
             <Link
               key={item.href}

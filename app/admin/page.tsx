@@ -15,7 +15,7 @@ export default function AdminPage() {
       <PageHeader
         eyebrow="Admin"
         title="Painel administrativo inicial"
-        description="Area demonstrativa da SEALQ sem autenticacao, backend ou dados reais neste momento."
+        description="Área demonstrativa da SEALQ sem autenticação, backend ou dados reais neste momento."
       />
       <Container className="py-12">
         <div className="grid gap-5 md:grid-cols-3">

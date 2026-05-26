@@ -8,12 +8,12 @@ export default function AdminTrabalhosPage() {
       <PageHeader
         eyebrow="Admin"
         title="Trabalhos submetidos"
-        description="Tabela administrativa sera adicionada quando o fluxo de submissao existir."
+        description="Tabela administrativa será adicionada quando o fluxo de submissão existir."
       />
       <Container className="py-12">
         <Card>
           <p className="text-sm leading-6 text-[#566247]">
-            Nenhum dado de submissao foi implementado neste recorte.
+            Nenhum dado de submissão foi implementado neste recorte.
           </p>
         </Card>
       </Container>

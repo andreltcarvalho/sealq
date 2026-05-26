@@ -19,14 +19,14 @@ export default function Home() {
               Semana de Entomologia e Acarologia Luiz de Queiroz
             </p>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#566247]">
-              Uma experiencia digital para reunir programacao, palestrantes,
-              inscricoes e submissoes de trabalhos em torno das culturas de
-              cana-de-acucar, citros e milho.
+              Uma experiência digital para reunir programação, palestrantes,
+              inscrições e submissões de trabalhos em torno das culturas de
+              cana-de-açúcar, citros e milho.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/inscricao">Ver inscricao</ButtonLink>
+              <ButtonLink href="/inscricao">Ver inscrição</ButtonLink>
               <ButtonLink href="/programacao" variant="secondary">
-                Conferir programacao
+                Conferir programação
               </ButtonLink>
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function Home() {
                 <div className="mt-6 grid gap-5">
                   <div>
                     <p className="text-sm text-[#dce8d4]">Tema</p>
-                    <p className="mt-1 text-lg font-semibold">Cana-de-acucar | Citros | Milho</p>
+                    <p className="mt-1 text-lg font-semibold">Cana-de-açúcar | Citros | Milho</p>
                   </div>
                   <div>
                     <p className="text-sm text-[#dce8d4]">Local</p>
@@ -70,9 +70,9 @@ export default function Home() {
       <section className="border-y border-[#d9d4bd] bg-[#eef3e6]">
         <Container className="grid gap-5 py-12 md:grid-cols-3">
           {[
-            ["Programacao", "Agenda organizada por dias, horarios e atividades tecnicas."],
-            ["Palestrantes", "Espaco para convidados, instituicoes e temas cientificos."],
-            ["Organizacao", "Estrutura simples para conduzir o evento com baixa manutencao."],
+            ["Programação", "Agenda organizada por dias, horários e atividades técnicas."],
+            ["Palestrantes", "Espaço para convidados, instituições e temas científicos."],
+            ["Organização", "Estrutura simples para conduzir o evento com baixa manutenção."],
           ].map(([title, description]) => (
             <Card key={title}>
               <h2 className="text-lg font-semibold text-[#16351f]">{title}</h2>
