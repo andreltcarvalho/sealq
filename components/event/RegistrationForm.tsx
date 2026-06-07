@@ -2,6 +2,29 @@
 
 import type { FormEvent, ReactNode } from "react";
 import { useId, useState } from "react";
+import {
+  Checkbox,
+  CloseButton,
+  ConfirmationLabel,
+  Dialog,
+  DialogCopy,
+  DialogOverlay,
+  DialogTitle,
+  FieldGroup,
+  FieldLabel,
+  FieldsGrid,
+  Form,
+  FormActions,
+  FormIntro,
+  FormTitle,
+  Input,
+  RequiredCopy,
+  RequiredMark,
+  Select,
+  SubmitButton,
+  SuccessIcon,
+  Textarea,
+} from "./RegistrationForm.styles";
 
 const categories = [
   { value: "student", label: "Estudante" },
@@ -31,74 +54,57 @@ export function RegistrationForm() {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        className="grid gap-6 rounded-lg border border-[#d9d4bd] bg-[#fbfaf5] p-6 shadow-sm"
-      >
+      <Form onSubmit={handleSubmit}>
         <div>
-          <h2 className="text-2xl font-semibold tracking-tight text-[#16351f]">
-            Dados do participante
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-[#566247]">
-            Preencha as informações abaixo para simular sua inscrição na SEALQ.
-          </p>
+          <FormTitle>Dados do participante</FormTitle>
+          <FormIntro>Preencha as informações abaixo para simular sua inscrição na SEALQ.</FormIntro>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
+        <FieldsGrid>
           <Field label="Nome completo" htmlFor={`${formId}-full-name`} required>
-            <input
+            <Input
               id={`${formId}-full-name`}
               name="fullName"
               type="text"
               required
               autoComplete="name"
               placeholder="Ex.: Ana Carolina Silva"
-              className="field-control"
             />
           </Field>
 
           <Field label="E-mail" htmlFor={`${formId}-email`} required>
-            <input
+            <Input
               id={`${formId}-email`}
               name="email"
               type="email"
               required
               autoComplete="email"
               placeholder="voce@email.com"
-              className="field-control"
             />
           </Field>
 
           <Field label="Telefone" htmlFor={`${formId}-phone`}>
-            <input
+            <Input
               id={`${formId}-phone`}
               name="phone"
               type="tel"
               autoComplete="tel"
               placeholder="(19) 99999-9999"
-              className="field-control"
             />
           </Field>
 
           <Field label="Instituição" htmlFor={`${formId}-institution`}>
-            <input
+            <Input
               id={`${formId}-institution`}
               name="institution"
               type="text"
               autoComplete="organization"
               placeholder="Ex.: ESALQ/USP"
-              className="field-control"
             />
           </Field>
 
           <Field label="Categoria" htmlFor={`${formId}-category`} required>
-            <select
-              id={`${formId}-category`}
-              name="category"
-              required
-              defaultValue=""
-              className="field-control"
-            >
+            <Select id={`${formId}-category`} name="category" required defaultValue="">
               <option value="" disabled>
                 Selecione uma categoria
               </option>
@@ -107,74 +113,49 @@ export function RegistrationForm() {
                   {category.label}
                 </option>
               ))}
-            </select>
+            </Select>
           </Field>
-        </div>
+        </FieldsGrid>
 
         <Field label="Necessidade especial ou observação" htmlFor={`${formId}-notes`}>
-          <textarea
+          <Textarea
             id={`${formId}-notes`}
             name="notes"
             rows={4}
             placeholder="Informe algo importante para a organização, se necessário."
-            className="field-control resize-y"
           />
         </Field>
 
-        <label className="flex gap-3 rounded-md border border-[#d9d4bd] bg-white/60 p-4 text-sm leading-6 text-[#566247]">
-          <input
-            type="checkbox"
-            required
-            className="mt-1 size-4 rounded border-[#c9c29e] text-[#0b4a24] focus:ring-[#f6c65b]"
-          />
+        <ConfirmationLabel>
+          <Checkbox type="checkbox" required />
           <span>
-            Confirmo que as informações preenchidas estão corretas e entendo que esta
-            inscrição é uma simulação do MVP.
+            Confirmo que as informações preenchidas estão corretas e entendo que esta inscrição é
+            uma simulação do MVP.
           </span>
-        </label>
+        </ConfirmationLabel>
 
-        <div className="flex flex-col gap-3 border-t border-[#d9d4bd] pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-[#566247]">Campos marcados com * são obrigatórios.</p>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="inline-flex min-h-11 items-center justify-center rounded-md bg-[#0b4a24] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#063719] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d86f19] disabled:cursor-not-allowed disabled:opacity-70"
-          >
+        <FormActions>
+          <RequiredCopy>Campos marcados com * são obrigatórios.</RequiredCopy>
+          <SubmitButton type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Enviando..." : "Inscrever-se"}
-          </button>
-        </div>
-      </form>
+          </SubmitButton>
+        </FormActions>
+      </Form>
 
       {showSuccess ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby={`${formId}-success-title`}
-          className="fixed inset-0 z-50 grid place-items-center bg-[#16351f]/55 px-5 py-8 backdrop-blur-sm"
-        >
-          <div className="w-full max-w-md rounded-lg border border-[#d9d4bd] bg-[#fbfaf5] p-6 shadow-xl">
-            <div className="grid size-12 place-items-center rounded-md bg-[#e9efe1] text-2xl text-[#0b4a24]">
-              ✓
-            </div>
-            <h2
-              id={`${formId}-success-title`}
-              className="mt-5 text-2xl font-semibold text-[#16351f]"
-            >
-              Inscrição realizada com sucesso
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-[#566247]">
-              Sua inscrição foi registrada nesta simulação. Você receberá um e-mail
-              com mais informações sobre a SEALQ.
-            </p>
-            <button
-              type="button"
-              onClick={() => setShowSuccess(false)}
-              className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-[#0b4a24] px-5 text-sm font-semibold text-white transition hover:bg-[#063719] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d86f19]"
-            >
+        <DialogOverlay role="dialog" aria-modal="true" aria-labelledby={`${formId}-success-title`}>
+          <Dialog>
+            <SuccessIcon>✓</SuccessIcon>
+            <DialogTitle id={`${formId}-success-title`}>Inscrição realizada com sucesso</DialogTitle>
+            <DialogCopy>
+              Sua inscrição foi registrada nesta simulação. Você receberá um e-mail com mais
+              informações sobre a SEALQ.
+            </DialogCopy>
+            <CloseButton type="button" onClick={() => setShowSuccess(false)}>
               Entendi
-            </button>
-          </div>
-        </div>
+            </CloseButton>
+          </Dialog>
+        </DialogOverlay>
       ) : null}
     </>
   );
@@ -189,12 +170,12 @@ type FieldProps = {
 
 function Field({ children, htmlFor, label, required = false }: FieldProps) {
   return (
-    <div className="grid gap-2">
-      <label htmlFor={htmlFor} className="text-sm font-semibold text-[#16351f]">
+    <FieldGroup>
+      <FieldLabel htmlFor={htmlFor}>
         {label}
-        {required ? <span className="text-[#d86f19]"> *</span> : null}
-      </label>
+        {required ? <RequiredMark> *</RequiredMark> : null}
+      </FieldLabel>
       {children}
-    </div>
+    </FieldGroup>
   );
 }

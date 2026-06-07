@@ -1,6 +1,13 @@
-import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { Card } from "@/components/ui/Card";
+import {
+  Activity,
+  ActivityTitle,
+  ActivityType,
+  ScheduleCard,
+  ScheduleContainer,
+  ScheduleList,
+  Time,
+} from "./page.styles";
 
 const schedule = [
   { time: "09:00", title: "Credenciamento", type: "Recepção" },
@@ -16,22 +23,19 @@ export default function ProgramacaoPage() {
         title="Programação inicial"
         description="Estrutura base para exibir atividades da SEALQ por horário, tipo, sala e responsáveis."
       />
-      <Container className="py-12">
-        <div className="grid gap-4">
+      <ScheduleContainer>
+        <ScheduleList>
           {schedule.map((item) => (
-            <Card
-              key={`${item.time}-${item.title}`}
-              className="flex flex-col gap-3 sm:flex-row sm:items-center"
-            >
-              <div className="w-24 text-sm font-semibold text-[#d86f19]">{item.time}</div>
-              <div className="flex-1">
-                <h2 className="text-lg font-semibold text-[#16351f]">{item.title}</h2>
-                <p className="mt-1 text-sm text-[#566247]">{item.type}</p>
-              </div>
-            </Card>
+            <ScheduleCard key={`${item.time}-${item.title}`}>
+              <Time>{item.time}</Time>
+              <Activity>
+                <ActivityTitle>{item.title}</ActivityTitle>
+                <ActivityType>{item.type}</ActivityType>
+              </Activity>
+            </ScheduleCard>
           ))}
-        </div>
-      </Container>
+        </ScheduleList>
+      </ScheduleContainer>
     </>
   );
 }

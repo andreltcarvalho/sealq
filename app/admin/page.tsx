@@ -1,7 +1,13 @@
-import Link from "next/link";
-import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card } from "@/components/ui/Card";
+import {
+  AdminContainer,
+  AdminLink,
+  AdminLinks,
+  StatLabel,
+  StatsGrid,
+  StatValue,
+} from "./page.styles";
 
 const stats = [
   ["Inscritos", "0"],
@@ -17,30 +23,20 @@ export default function AdminPage() {
         title="Painel administrativo inicial"
         description="Área demonstrativa da SEALQ sem autenticação, backend ou dados reais neste momento."
       />
-      <Container className="py-12">
-        <div className="grid gap-5 md:grid-cols-3">
+      <AdminContainer>
+        <StatsGrid>
           {stats.map(([label, value]) => (
             <Card key={label}>
-              <p className="text-sm text-[#566247]">{label}</p>
-              <p className="mt-3 text-4xl font-semibold text-[#0b4a24]">{value}</p>
+              <StatLabel>{label}</StatLabel>
+              <StatValue>{value}</StatValue>
             </Card>
           ))}
-        </div>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link
-            className="rounded-md border border-[#c9c29e] bg-[#fbfaf5] px-4 py-3 text-sm font-semibold text-[#16351f] hover:border-[#0b4a24] hover:bg-[#eef3e6]"
-            href="/admin/inscritos"
-          >
-            Ver inscritos
-          </Link>
-          <Link
-            className="rounded-md border border-[#c9c29e] bg-[#fbfaf5] px-4 py-3 text-sm font-semibold text-[#16351f] hover:border-[#0b4a24] hover:bg-[#eef3e6]"
-            href="/admin/trabalhos"
-          >
-            Ver trabalhos
-          </Link>
-        </div>
-      </Container>
+        </StatsGrid>
+        <AdminLinks>
+          <AdminLink href="/admin/inscritos">Ver inscritos</AdminLink>
+          <AdminLink href="/admin/trabalhos">Ver trabalhos</AdminLink>
+        </AdminLinks>
+      </AdminContainer>
     </>
   );
 }

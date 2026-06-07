@@ -1,6 +1,6 @@
-import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card } from "@/components/ui/Card";
+import { Bio, Initial, Institution, SpeakerName, SpeakersGrid } from "./page.styles";
 
 const speakers = ["Dra. Ana Ribeiro", "Prof. Marcos Lima", "Dra. Helena Costa"];
 
@@ -12,20 +12,16 @@ export default function PalestrantesPage() {
         title="Palestrantes"
         description="Base visual para listar convidados, instituições, mini bios e temas ligados à entomologia, acarologia e agricultura."
       />
-      <Container className="grid gap-5 py-12 md:grid-cols-3">
+      <SpeakersGrid>
         {speakers.map((speaker) => (
           <Card key={speaker}>
-            <div className="grid size-14 place-items-center rounded-md bg-[#e9efe1] text-lg font-semibold text-[#0b4a24]">
-              {speaker.slice(0, 1)}
-            </div>
-            <h2 className="mt-5 text-lg font-semibold text-[#16351f]">{speaker}</h2>
-            <p className="mt-2 text-sm text-[#566247]">Instituição acadêmica</p>
-            <p className="mt-4 text-sm leading-6 text-[#566247]">
-              Mini bio e tema da palestra entram aqui quando a programação estiver definida.
-            </p>
+            <Initial>{speaker.slice(0, 1)}</Initial>
+            <SpeakerName>{speaker}</SpeakerName>
+            <Institution>Instituição acadêmica</Institution>
+            <Bio>Mini bio e tema da palestra entram aqui quando a programação estiver definida.</Bio>
           </Card>
         ))}
-      </Container>
+      </SpeakersGrid>
     </>
   );
 }

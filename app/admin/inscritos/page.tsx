@@ -1,6 +1,6 @@
-import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card } from "@/components/ui/Card";
+import { EmptyStateContainer, EmptyStateCopy } from "../empty-state.styles";
 
 export default function AdminInscritosPage() {
   return (
@@ -10,13 +10,11 @@ export default function AdminInscritosPage() {
         title="Inscritos"
         description="Tabela administrativa será adicionada quando o fluxo de inscrição existir."
       />
-      <Container className="py-12">
+      <EmptyStateContainer>
         <Card>
-          <p className="text-sm leading-6 text-[#566247]">
-            Nenhum dado de inscrição foi implementado neste recorte.
-          </p>
+          <EmptyStateCopy>Nenhum dado de inscrição foi implementado neste recorte.</EmptyStateCopy>
         </Card>
-      </Container>
+      </EmptyStateContainer>
     </>
   );
 }
