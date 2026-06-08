@@ -18,6 +18,7 @@ const navItems = [
   { href: "/palestrantes", label: "Palestrantes" },
   { href: "/inscricao", label: "Inscrição" },
   { href: "/submissao", label: "Submissão" },
+  { href: "/concurso/inscricao", label: "Concurso" },
 ];
 
 export function Header() {
@@ -44,7 +45,7 @@ export function Header() {
           ))}
         </Navigation>
 
-        <AdminLink href="/admin">Admin</AdminLink>
+        <AdminLink href="/concurso/login">Admin</AdminLink>
       </HeaderContainer>
     </HeaderRoot>
   );
