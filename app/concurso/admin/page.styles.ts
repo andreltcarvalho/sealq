@@ -17,7 +17,7 @@ export const Content = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.2rem;
 `;
 
 export const Header = styled.div`
@@ -27,6 +27,7 @@ export const Header = styled.div`
   justify-content: space-between;
   gap: 1.25rem;
   width: 100%;
+  
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -53,6 +54,7 @@ export const Subtitle = styled.span`
   color: ${({ theme }) => theme.colors.placeholder};
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  
 `;
 
 export const Title = styled.h2`

@@ -5,27 +5,29 @@ export const PageContainer = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 1rem; 
   background-color: ${({ theme }) => theme.colors.background};
 `;
+
 
 export const FormCard = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem; 
   width: 100%;
   max-width: 550px;
   background-color: ${(props) => props.theme.colors.surface};
   border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: ${(props) => props.theme.borderRadius.card};
-  padding: 2.5rem;
+  padding: 2rem; 
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.03);
 
-  /* Garante que nenhum elemento filho saia para fora do limite do card */
   * {
     box-sizing: border-box;
   }
 `;
+
+
 export const HeaderGroup = styled.div`
   text-align: center;
   margin-bottom: 0.5rem;
@@ -46,9 +48,7 @@ export const FormSubtitle = styled.p`
 
 export const RowGroup = styled.div`
   display: grid;
-  /* Força a criação de 2 colunas com o tamanho exato de 1 fração cada */
   grid-template-columns: 1fr 1fr;
-  /* Adiciona um espaçamento horizontal agressivo e obrigatório entre as colunas */
   column-gap: 1.5rem !important;
   width: 100%;
 
@@ -149,11 +149,10 @@ export const ErrorAlert = styled.div`
 `;
 
 export const LoadingFeedback = styled.p`
-  font-size: 0.8rem;
-  /* Corrigido: usando foreground (Verde escuro floresta) que é a cor de texto padrão do seu tema */
+  font-size: 0.8rem; 
   color: ${(props) => props.theme.colors.foreground};
   margin-top: 0.5rem;
   text-align: center;
-  opacity: 0.8; /* Uma leve opacidade para dar o tom de feedback secundário */
+  opacity: 0.8; 
 `;
 

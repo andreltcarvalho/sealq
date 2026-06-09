@@ -8,15 +8,24 @@ import { useTheme } from "styled-components";
 import { cpfMask, phoneMask } from "@/lib/concurso/utils/masks";
 import { registrationService } from "@/lib/concurso/services/registrationService";
 import { getConcursoSupabase } from "@/lib/concurso/supabase";
-import { Input, Button, Checkbox, Modal, FileInput } from "@/components/concurso/ui";
+import {
+  Input,
+  Button,
+  Checkbox,
+  Modal,
+  FileInput,
+} from "@/components/concurso/ui";
 import type { Registration } from "@/types/concurso";
 import { registrationSchema, type RegistrationFormData } from "./schema";
 import { generateProtocolTemplate } from "./utils/generateProtocolTemplate";
 import * as S from "./page.styles";
+import { sanitizeFilename } from "./utils/formatters";
 
 function useRegistrationForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formDataTmp, setFormDataTmp] = useState<RegistrationFormData | null>(null);
+  const [formDataTmp, setFormDataTmp] = useState<RegistrationFormData | null>(
+    null,
+  );
   const [protocolNumber, setProtocolNumber] = useState("");
   const lastTimestamp = useRef(-1);
   const sequence = useRef(0);
@@ -111,7 +120,10 @@ function useSubmitRegistration() {
     setError(null);
 
     try {
-      if (!file) throw new Error("O arquivo do regulamento/projeto em PDF é obrigatório.");
+      if (!file)
+        throw new Error(
+          "O arquivo do regulamento/projeto em PDF é obrigatório.",
+        );
 
       const supabase = getConcursoSupabase();
       const { data: existingCandidates, error: checkError } = await supabase
@@ -198,7 +210,19 @@ export default function ConcursoRegistrationPage() {
       const realProtocolId = generateSnowflakeId();
 
       const fileList = formDataTmp.documentFile as FileList;
-      const file = fileList && fileList.length > 0 ? fileList[0] : null;
+      let fileToUpload = fileList && fileList.length > 0 ? fileList[0] : null;
+
+      
+      if (fileToUpload) {
+        const cleanFilename = sanitizeFilename(fileToUpload.name);
+
+        // Cria uma CÓPIA exata do arquivo, mas com o nome limpo!
+        fileToUpload = new File([fileToUpload], cleanFilename, {
+          type: fileToUpload.type,
+          lastModified: fileToUpload.lastModified,
+        });
+      }
+      // ===================================
 
       const candidateData = {
         full_name: formDataTmp.fullName,
@@ -208,7 +232,8 @@ export default function ConcursoRegistrationPage() {
         payment_number: formDataTmp.paymentNumber,
       };
 
-      await registerCandidate(candidateData, file, realProtocolId);
+      // Mandamos o "fileToUpload" que agora é o arquivo renomeado!
+      await registerCandidate(candidateData, fileToUpload, realProtocolId);
       handleCloseModal();
     } catch (err) {
       console.error(err);
@@ -397,7 +422,3 @@ export default function ConcursoRegistrationPage() {
     </S.PageContainer>
   );
 }
-
-
-
-
